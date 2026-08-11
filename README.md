@@ -52,7 +52,7 @@ Este repositório **não contém nenhuma credencial real**. Antes de compilar, s
 
 O **access token (Bearer)** **não é hardcoded** — cole-o diretamente no campo "Bearer token" da tela antes de rodar o teste, já que costuma ter validade curta.
 
-Para gerar as credenciais Unico, siga [este passo a passo](https://developers.unico.io/guias/android/como-comecar#obtendo-suas-credenciais).
+Para gerar as credenciais Unico, consulte a [documentação oficial](https://developer.unico.io/).
 
 ---
 
@@ -94,4 +94,4 @@ O botão **"Testar câmera (Liveness)"** é independente do fluxo SilentAuth —
 
 ## 🤔 Dúvidas
 
-Em caso de conflito de biblioteca com a SDK, abra um chamado na plataforma oficial de Suporte da Unico. Para dúvidas gerais de integração, consulte a [documentação oficial](https://developers.unico.io/guias/android/overview).
+Em caso de conflito de biblioteca com a SDK, abra um chamado na plataforma oficial de Suporte da Unico. Para dúvidas gerais de integração, consulte a [documentação oficial](https://developer.unico.io/).
