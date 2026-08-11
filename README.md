@@ -25,6 +25,10 @@ Este projeto testa o fluxo de **autenticação silenciosa de device** (SilentAut
 
 A tela permite rodar os dois passos e acompanhar o resultado da chamada no painel de logs.
 
+<p align="center">
+  <img width="320" src="docs/screenshots/tela-principal.png" alt="Tela principal da POC">
+</p>
+
 > ⚠️ O `externalUserId` usado no passo 1 e no passo 2 precisa ser **idêntico, char a char**. Qualquer diferença faz a busca falhar silenciosamente (retorno inconclusivo, sem erro).
 >
 > ⚠️ A coleta de device tem uma janela de validade curta e só pode ser usada uma vez. Se o teste vier inconclusivo, gere uma nova coleta (botão "Testar SilentAuth" de novo) antes de tentar o processo.
