@@ -160,7 +160,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_marginBottom="8dp"
-                        android:text="Testar câmera (Liveness)"
+                        android:text="Criar processo com Selfie"
                         android:onClick="openCameraLiveness"
                         android:textColor="@color/unico_blue"
                         app:cornerRadius="12dp"

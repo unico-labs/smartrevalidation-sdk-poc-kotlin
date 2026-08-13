@@ -154,9 +154,10 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    private val apiKey = "YOUR_API_KEY"
+    private val silentAuthApiKey = ""
+    private val selfieApiKey = ""
 
-    private fun createProcess(externalUserId: String) {
+    private fun createProcess(apiKey: String, externalUserId: String? = null, imageBase64: String? = null) {
         val subjectCode = subjectCodeInput.text.toString().trim()
         val subjectName = subjectNameInput.text.toString().trim()
         val bearerToken = bearerTokenInput.text.toString().trim()
@@ -166,6 +167,9 @@ class MainActivity : AppCompatActivity(),
             return
         }
 
+        if (externalUserId != null) {
+            addLog("CreateProcess -> externalUserId=\"$externalUserId\" (len=${externalUserId.length})")
+        }
         addLog("Disparando CreateProcess...")
 
         Thread {
@@ -174,7 +178,8 @@ class MainActivity : AppCompatActivity(),
                     .put("subject", JSONObject()
                         .put("code", subjectCode)
                         .put("name", subjectName))
-                    .put("externalUserId", externalUserId)
+                externalUserId?.let { body.put("externalUserId", it) }
+                imageBase64?.let { body.put("imageBase64", it) }
 
                 addLog("POST /processes/v1 body: $body")
 
@@ -246,9 +251,12 @@ class MainActivity : AppCompatActivity(),
         addLog("Selfie capturada com sucesso.")
         textField.text = "Selfie capturada com sucesso."
 
-        addLog("JWT da selfie capturado com sucesso.")
-
         Log.d(TAG, "JWT COMPLETO DA SELFIE: ${result.encrypted}")
+
+        result.encrypted?.let { encrypted ->
+            addLog("Criando processo com selfie (imageBase64)...")
+            createProcess(apiKey = selfieApiKey, imageBase64 = encrypted)
+        }
     }
 
     override fun onErrorSelfie(error: ErrorBio?) {
@@ -276,8 +284,8 @@ class MainActivity : AppCompatActivity(),
             addLog("Coleta em background iniciada.")
             activeSilentAuthUserId = null
             mainHandler.postDelayed({
-                createProcess(silentAuthUserId)
-            }, 4500)
+                createProcess(apiKey = silentAuthApiKey, externalUserId = silentAuthUserId)
+            }, 15000)
             return
         }
 
