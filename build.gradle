@@ -14,14 +14,6 @@ allprojects {
        mavenCentral()
        maven { url 'https://jitpack.io'}
         maven { url "https://maven-sdk.unico.run/sdk-mobile" }
-        maven {
-            url "https://maven.pkg.github.com/acesso-io/Security-Offsec"
-            credentials {
-                username = "TOKEN"
-                password = System.getenv("TOKEN_GITHUB") ?: ""
-            }
-            content { includeGroupByRegex 'com\\.projsec.*' }
-        }
    }
  }
 
